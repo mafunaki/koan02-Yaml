@@ -12,7 +12,9 @@ jobs:
       - restore_cache:
           keys:
           - v1-dependencies-
-      - run: mkdir ~/cache/
+      - run: 
+          command: mkdir ~/cache/
+          when: always # ignore, even if ~/cache exists
       - run: echo "testfile" > ~/cache/log.txt
       - save_cache:
           key: v1-dependencies-
