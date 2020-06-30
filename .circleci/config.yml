@@ -12,10 +12,13 @@ jobs:
       - restore_cache:
           keys:
           - v1-dependencies-
-      - run: mkdir ~/cache/
+      - run: 
+          command: |
+            if [ ! -d "~/cache" ]; then
+              mkdir ~/cache/
+            fi
       - run:
           command: echo "testfile" > ~/cache/log.txt
-          when: always
       - save_cache:
           key: v1-dependencies-
           paths:
